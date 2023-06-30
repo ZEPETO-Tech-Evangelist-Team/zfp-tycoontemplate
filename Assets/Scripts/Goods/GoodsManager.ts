@@ -116,6 +116,8 @@ export default class GoodsManager extends ZepetoScriptBehaviour {
             curValue -= amount[i];
             this.collectedGoods.set(i as GoodsType, Math.max(0, curValue));
         }
+        
+        UIManager.GetInstance().UpdateUI();
     }
     
     public CollectGood(good: Good)
