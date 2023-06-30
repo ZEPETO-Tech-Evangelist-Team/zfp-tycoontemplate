@@ -1,0 +1,35 @@
+fileFormatVersion: 2
+guid: 07a16c64ed411a44c92fbe87fd361786
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_AI_1 = require(\"UnityEngine.AI\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst AgentManager_1 = require(\"./AgentManager\");\r\nclass
+    Agent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n       
+    super(...arguments);\r\n        this.moveSpeed = 1;\r\n        this._isMoving
+    = false;\r\n    }\r\n    get isMoving() {\r\n        return this.navigation.remainingDistance
+    <= this.navigation.stoppingDistance;\r\n    }\r\n    Awake() {\r\n        this.navigation
+    = this.GetComponent($typeof(UnityEngine_AI_1.NavMeshAgent));\r\n        AgentManager_1.default.GetInstance().AddAgent(this);\r\n   
+    }\r\n    SetTarget(target) {\r\n        this.navigation.SetDestination(target.position);\r\n       
+    this._isMoving = true;\r\n    }\r\n    Update() {\r\n        if (this._isMoving
+    && this.navigation.remainingDistance <= this.navigation.stoppingDistance) {\r\n           
+    this._isMoving = false;\r\n            this.onDestinationReached.Invoke();\r\n       
+    }\r\n    }\r\n}\r\nexports.default = Agent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQWdlbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJBZ2VudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUNBLG1EQUFpRTtBQUVqRSxpREFBb0Q7QUFDcEQsaURBQTBDO0FBRTFDLE1BQXFCLEtBQU0sU0FBUSxxQ0FBcUI7SUFBeEQ7O1FBQ1csY0FBUyxHQUFXLENBQUMsQ0FBQztRQUtyQixjQUFTLEdBQWEsS0FBSyxDQUFDO0lBMkJ4QyxDQUFDO0lBekJHLElBQVcsUUFBUTtRQUVmLE9BQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxpQkFBaUIsSUFBSSxJQUFJLENBQUMsVUFBVSxDQUFDLGdCQUFnQixDQUFDO0lBQ2pGLENBQUM7SUFFTSxLQUFLO1FBRVIsSUFBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUMsWUFBWSxTQUFDLDZCQUFZLEVBQUcsQ0FBQztRQUNwRCxzQkFBWSxDQUFDLFdBQVcsRUFBRSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsQ0FBQztJQUM5QyxDQUFDO0lBRU0sU0FBUyxDQUFDLE1BQWlCO1FBRTlCLElBQUksQ0FBQyxVQUFVLENBQUMsY0FBYyxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQztRQUNoRCxJQUFJLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQztJQUMxQixDQUFDO0lBRU0sTUFBTTtRQUVULElBQUksSUFBSSxDQUFDLFNBQVMsSUFBSSxJQUFJLENBQUMsVUFBVSxDQUFDLGlCQUFpQixJQUFJLElBQUksQ0FBQyxVQUFVLENBQUMsZ0JBQWdCLEVBQzNGO1lBQ0ksSUFBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLENBQUM7WUFDdkIsSUFBSSxDQUFDLG9CQUFvQixDQUFDLE1BQU0sRUFBRSxDQUFDO1NBQ3RDO0lBQ0wsQ0FBQztDQUNKO0FBakNELHdCQWlDQyJ9","assetPath":"Assets/Scripts/Agent.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"moveSpeed","type":"System.Single","isArray":false,"initValue":["1"],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.AIModule","name":"navigation","type":"UnityEngine.AI.NavMeshAgent","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"HideInInspector","args":[]}]},{"assembly":"UnityEngine.CoreModule","name":"onDestinationReached","type":"UnityEngine.Events.UnityEvent","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"HideInInspector","args":[]}]}],"name":"Agent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 1ccb03cd592f2eb4e8cb05b7e2b49467
+  onlyWriteTrigger: 0

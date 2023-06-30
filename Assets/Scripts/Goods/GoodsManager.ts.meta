@@ -1,0 +1,77 @@
+fileFormatVersion: 2
+guid: 8e754b7f3ae9ea944b4b2bd31a1fe8a4
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nexports.GoodsStatus = exports.GoodsType = void 0;\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Good_1 = require(\"./Good\");\r\nconst UIManager_1 = require(\"../UI/UIManager\");\r\nvar
+    GoodsType;\r\n(function (GoodsType) {\r\n    GoodsType[GoodsType[\"TYPE1\"] =
+    0] = \"TYPE1\";\r\n    GoodsType[GoodsType[\"TYPE2\"] = 1] = \"TYPE2\";\r\n   
+    GoodsType[GoodsType[\"TYPE3\"] = 2] = \"TYPE3\";\r\n    GoodsType[GoodsType[\"TYPE4\"]
+    = 3] = \"TYPE4\";\r\n    GoodsType[GoodsType[\"MAX\"] = 4] = \"MAX\";\r\n})(GoodsType
+    = exports.GoodsType || (exports.GoodsType = {}));\r\nvar GoodsStatus;\r\n(function
+    (GoodsStatus) {\r\n    GoodsStatus[GoodsStatus[\"READY\"] = 0] = \"READY\";\r\n   
+    GoodsStatus[GoodsStatus[\"MARKEDFORPICKUP\"] = 1] = \"MARKEDFORPICKUP\";\r\n   
+    GoodsStatus[GoodsStatus[\"INTRANSIT\"] = 2] = \"INTRANSIT\";\r\n    GoodsStatus[GoodsStatus[\"DELIVERED\"]
+    = 3] = \"DELIVERED\";\r\n    GoodsStatus[GoodsStatus[\"MAX\"] = 4] = \"MAX\";\r\n})(GoodsStatus
+    = exports.GoodsStatus || (exports.GoodsStatus = {}));\r\nclass GoodsManager extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n        super(...arguments);\r\n       
+    this.goodsMap = new Map();\r\n        this.collectedGoods = new Map();\r\n   
+    }\r\n    static GetInstance() {\r\n        if (GoodsManager.instance == undefined)
+    {\r\n            GoodsManager.instance = UnityEngine_1.GameObject.Find(\"GoodsManager\").GetComponent($typeof(GoodsManager));\r\n       
+    }\r\n        return this.instance;\r\n    }\r\n    Awake() {\r\n        this.gameObject.name
+    = \"GoodsManager\";\r\n        this.Initialize();\r\n    }\r\n    Initialize()
+    {\r\n        for (let i = 0; i < GoodsType.MAX; i++) {\r\n            this.collectedGoods.set(i,
+    0);\r\n            //this.goodsMap.set(i as GoodsType, new Array<Good>());\r\n       
+    }\r\n    }\r\n    //All Goods in scene are initialized and added to this map
+    in their respective Awake Functions.\r\n    AddGood(good) {\r\n        //If our
+    map does not have the key for the good type, the array will not be initialized.
+    \r\n        //Let''s initialize the array here. \r\n        if (!this.goodsMap.has(good.type))
+    {\r\n            this.goodsMap.set(good.type, new Array());\r\n        }\r\n       
+    //We''ll cache the goods list for readability. \r\n        //Its good practice
+    not to keep accessing the map unless necessary. \r\n        let goodsList = this.goodsMap.get(good.type);\r\n       
+    //Right now, all we need to do with this list is add the new good to it, but
+    we have \r\n        //the cached list in case we need to add anything else to
+    this function. \r\n        goodsList.push(good);\r\n        //We''ll parent the
+    Goods to this transform so that we can keep track of goods in the scene more
+    easily.\r\n        good.transform.SetParent(this.transform, true);\r\n    }\r\n   
+    RemoveGood(good) {\r\n        if (!this.goodsMap.has(good.type)) {\r\n           
+    return;\r\n        }\r\n        let goodsList = this.goodsMap.get(good.type);\r\n       
+    if (goodsList.includes(good)) {\r\n            let index = goodsList.indexOf(good);\r\n           
+    goodsList.splice(index, 1);\r\n        }\r\n    }\r\n    CheckCost(amount) {\r\n       
+    let check = false;\r\n        for (let i = 0; i < GoodsType.MAX; i++) {\r\n           
+    check = (this.collectedGoods.get(i) >= amount[i]);\r\n            if (!check)\r\n               
+    break;\r\n        }\r\n        return check;\r\n    }\r\n    GetCollectedGoodValue(type)
+    {\r\n        return this.collectedGoods.get(type);\r\n    }\r\n    SpendCollectedCoods(amount)
+    {\r\n        for (let i = 0; i < GoodsType.MAX; i++) {\r\n            let curValue
+    = this.collectedGoods.get(i);\r\n            curValue -= amount[i];\r\n           
+    this.collectedGoods.set(i, Math.max(0, curValue));\r\n        }\r\n    }\r\n   
+    CollectGood(good) {\r\n        let value = this.collectedGoods.get(good.type);\r\n       
+    this.collectedGoods.set(good.type, value + good.value);\r\n        UIManager_1.default.GetInstance().UpdateUI();\r\n   
+    }\r\n    GetGoodByType(type) {\r\n        if (!this.goodsMap.has(type)) {\r\n           
+    return;\r\n        }\r\n        return this.goodsMap.get(type);\r\n    }\r\n   
+    GetNextAvailableGood(type) {\r\n        let goodList = this.GetGoodByType(type);\r\n       
+    let foundGood = undefined;\r\n        for (let i = 0; i < goodList.length; i++)
+    {\r\n            if (goodList[i].status == GoodsStatus.READY) {\r\n               
+    foundGood = goodList[i];\r\n                break;\r\n            }\r\n       
+    }\r\n        return foundGood;\r\n    }\r\n}\r\nexports.default = GoodsManager;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR29vZHNNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiR29vZHNNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUFrRTtBQUNsRSxpREFBcUQ7QUFDckQsaUNBQTBCO0FBQzFCLCtDQUF3QztBQUV4QyxJQUFZLFNBT1g7QUFQRCxXQUFZLFNBQVM7SUFFakIsMkNBQVMsQ0FBQTtJQUNULDJDQUFTLENBQUE7SUFDVCwyQ0FBUyxDQUFBO0lBQ1QsMkNBQVMsQ0FBQTtJQUNULHVDQUFPLENBQUE7QUFDWCxDQUFDLEVBUFcsU0FBUyxHQUFULGlCQUFTLEtBQVQsaUJBQVMsUUFPcEI7QUFFRCxJQUFZLFdBT1g7QUFQRCxXQUFZLFdBQVc7SUFFbkIsK0NBQUssQ0FBQTtJQUNMLG1FQUFlLENBQUE7SUFDZix1REFBUyxDQUFBO0lBQ1QsdURBQVMsQ0FBQTtJQUNULDJDQUFHLENBQUE7QUFDUCxDQUFDLEVBUFcsV0FBVyxHQUFYLG1CQUFXLEtBQVgsbUJBQVcsUUFPdEI7QUFFRCxNQUFxQixZQUFhLFNBQVEscUNBQXFCO0lBQS9EOztRQWFZLGFBQVEsR0FBMkIsSUFBSSxHQUFHLEVBQXFCLENBQUM7UUFDaEUsbUJBQWMsR0FBMkIsSUFBSSxHQUFHLEVBQXFCLENBQUM7SUFvSGxGLENBQUM7SUFqSVUsTUFBTSxDQUFDLFdBQVc7UUFFckIsSUFBSSxZQUFZLENBQUMsUUFBUSxJQUFJLFNBQVMsRUFDdEM7WUFDSSxZQUFZLENBQUMsUUFBUSxHQUFHLHdCQUFVLENBQUMsSUFBSSxDQUFDLGNBQWMsQ0FBQyxDQUFDLFlBQVksU0FBQyxZQUFZLEVBQUcsQ0FBQztTQUN4RjtRQUVELE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBU0QsS0FBSztRQUVELElBQUksQ0FBQyxVQUFVLENBQUMsSUFBSSxHQUFHLGNBQWMsQ0FBQztRQUN0QyxJQUFJLENBQUMsVUFBVSxFQUFFLENBQUM7SUFDdEIsQ0FBQztJQUVP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","assetPath":"Assets/Scripts/Goods/GoodsManager.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"deliveryPointTransform","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"GoodsManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: e9ff8c52fc39be9bd5cdeacb4f7df756
+  onlyWriteTrigger: 0

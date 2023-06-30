@@ -1,0 +1,50 @@
+fileFormatVersion: 2
+guid: 54e0ab97e68b16d4883630e78ef2976f
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    Agent_1 = require(\"./Agent\");\r\nconst Good_1 = require(\"../Goods/Good\");\r\nconst
+    GoodsManager_1 = require(\"../Goods/GoodsManager\");\r\nconst Unit_1 = require(\"./Unit\");\r\nclass
+    UnitGoodsCollector extends Unit_1.default {\r\n    Awake() {\r\n        this.agent
+    = this.GetComponent($typeof(Agent_1.default));\r\n        this.agent.onDestinationReached.AddListener(()
+    => {\r\n            this.GoodsAction();\r\n        });\r\n    }\r\n    UnitAction()
+    {\r\n        this.FindGood();\r\n    }\r\n    FindGood() {\r\n        this.goodInTransit
+    = GoodsManager_1.default.GetInstance().GetNextAvailableGood(this.targetGoodType);\r\n       
+    //All goods have been delivered. Let''s wait for the good to respawn.\r\n       
+    if (this.goodInTransit == undefined) {\r\n            this.StartCoroutine(this.TryFindGoodAgain());\r\n           
+    console.log(\"Couldn''t Find any Goods. Trying again in 2 secds\");\r\n       
+    }\r\n        //We''ve found a good to collect. Move to the target good.\r\n       
+    else {\r\n            this.goodInTransit.MarkPickup();\r\n            this.agent.SetTarget(this.goodInTransit.transform);\r\n           
+    console.log(`Found Good: ${this.goodInTransit.name}. Status: ${this.goodInTransit.status}
+    Type: ${this.goodInTransit.type}`);\r\n        }\r\n    }\r\n    //Called only
+    when all goods of this unit''s type have been collected. We''ll wait one second
+    before attempting another search. \r\n    *TryFindGoodAgain() {\r\n        yield
+    new UnityEngine_1.WaitForSeconds(2.0);\r\n        this.FindGood();\r\n    }\r\n   
+    GoodsAction() {\r\n        if (this.goodInTransit == undefined) {\r\n           
+    return;\r\n        }\r\n        switch (this.goodInTransit.status) {\r\n           
+    case GoodsManager_1.GoodsStatus.MARKEDFORPICKUP:\r\n                this.PickupGood(this.goodInTransit);\r\n               
+    break;\r\n            case GoodsManager_1.GoodsStatus.INTRANSIT:\r\n               
+    this.DeliverGood(this.goodInTransit);\r\n                break;\r\n        }\r\n   
+    }\r\n    PickupGood(good) {\r\n        good.Pickup(this.dockTransform);\r\n       
+    this.agent.SetTarget(GoodsManager_1.default.GetInstance().deliveryPointTransform);\r\n   
+    }\r\n    DeliverGood(good) {\r\n        good.Deliver();\r\n        this.UnitAction();\r\n   
+    }\r\n}\r\nexports.default = UnitGoodsCollector;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVW5pdEdvb2RzQ29sbGVjdG9yLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVW5pdEdvb2RzQ29sbGVjdG9yLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQXdEO0FBQ3hELG1DQUE0QjtBQUM1Qix3Q0FBaUM7QUFDakMsd0RBQTZFO0FBQzdFLGlDQUEwQjtBQUUxQixNQUFxQixrQkFBbUIsU0FBUSxjQUFJO0lBT2hELEtBQUs7UUFFRCxJQUFJLENBQUMsS0FBSyxHQUFHLElBQUksQ0FBQyxZQUFZLFNBQUMsZUFBSyxFQUFHLENBQUM7UUFDeEMsSUFBSSxDQUFDLEtBQUssQ0FBQyxvQkFBb0IsQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQzdDLElBQUksQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUN2QixDQUFDLENBQUMsQ0FBQztJQUNQLENBQUM7SUFFTSxVQUFVO1FBRWIsSUFBSSxDQUFDLFFBQVEsRUFBRSxDQUFDO0lBQ3BCLENBQUM7SUFFTSxRQUFRO1FBRVgsSUFBSSxDQUFDLGFBQWEsR0FBRyxzQkFBWSxDQUFDLFdBQVcsRUFBRSxDQUFDLG9CQUFvQixDQUFDLElBQUksQ0FBQyxjQUFjLENBQUMsQ0FBQztRQUcxRixvRUFBb0U7UUFDcEUsSUFBSSxJQUFJLENBQUMsYUFBYSxJQUFJLFNBQVMsRUFDbkM7WUFDSSxJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxnQkFBZ0IsRUFBRSxDQUFDLENBQUM7WUFDN0MsT0FBTyxDQUFDLEdBQUcsQ0FBQyxrREFBa0QsQ0FBQyxDQUFDO1NBQ25FO1FBQ0QseURBQXlEO2FBRXpEO1lBQ0ksSUFBSSxDQUFDLGFBQWEsQ0FBQyxVQUFVLEVBQUUsQ0FBQztZQUNoQyxJQUFJLENBQUMsS0FBSyxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsYUFBYSxDQUFDLFNBQVMsQ0FBQyxDQUFDO1lBQ25ELE9BQU8sQ0FBQyxHQUFHLENBQUMsZUFBZSxJQUFJLENBQUMsYUFBYSxDQUFDLElBQUksYUFBYSxJQUFJLENBQUMsYUFBYSxDQUFDLE1BQU0sVUFBVSxJQUFJLENBQUMsYUFBYSxDQUFDLElBQUksRUFBRSxDQUFDLENBQUM7U0FDaEk7SUFDTCxDQUFDO0lBRUQsOEhBQThIO0lBQ3ZILENBQUMsZ0JBQWdCO1FBRXBCLE1BQU0sSUFBSSw0QkFBYyxDQUFDLEdBQUcsQ0FBQyxDQUFDO1FBQzlCLElBQUksQ0FBQyxRQUFRLEVBQUUsQ0FBQztJQUNwQixDQUFDO0lBRU0sV0FBVztRQUVkLElBQUksSUFBSSxDQUFDLGFBQWEsSUFBSSxTQUFTLEVBQUU7WUFBQyxPQUFPO1NBQUM7UUFFOUMsUUFBTyxJQUFJLENBQUMsYUFBYSxDQUFDLE1BQU0sRUFDaEM7WUFDSSxLQUFLLDBCQUFXLENBQUMsZUFBZTtnQkFDNUIsSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsYUFBYSxDQUFDLENBQUM7Z0JBQ3BDLE1BQU07WUFDVixLQUFLLDBCQUFXLENBQUMsU0FBUztnQkFDdEIsSUFBSSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsYUFBYSxDQUFDLENBQUM7Z0JBQ3JDLE1BQU07U0FDYjtJQUNMLENBQUM7SUFFTSxVQUFVLENBQUMsSUFBVTtRQUV4QixJQUFJLENBQUMsTUFBTSxDQUFDLElBQUksQ0FBQyxhQUFhLENBQUMsQ0FBQztRQUNoQyxJQUFJLENBQUMsS0FBSyxDQUFDLFNBQVMsQ0FBQyxzQkFBWSxDQUFDLFdBQVcsRUFBRSxDQUFDLHNCQUFzQixDQUFDLENBQUM7SUFDNUUsQ0FBQztJQUVNLFdBQVcsQ0FBQyxJQUFVO1FBRXpCLElBQUksQ0FBQyxPQUFPLEVBQUUsQ0FBQztRQUNmLElBQUksQ0FBQyxVQUFVLEVBQUUsQ0FBQztJQUN0QixDQUFDO0NBRUo7QUExRUQscUNBMEVDIn0=","assetPath":"Assets/Scripts/Units/UnitGoodsCollector.ts","manifest":{"properties":[{"assembly":"","name":"targetGoodType","type":"GoodsType","isArray":false,"initValue":[],"enumKeys":["TYPE1","TYPE2","TYPE3","TYPE4","MAX"],"enumValues":["0","1","2","3","4"],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"dockTransform","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"type","type":"UnitType","isArray":false,"initValue":[],"enumKeys":["GoodsCollector"],"enumValues":["0"],"attributes":[]}],"name":"UnitGoodsCollector","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 981bd1e5d5563b61af8177ea0c273a85
+  onlyWriteTrigger: 0

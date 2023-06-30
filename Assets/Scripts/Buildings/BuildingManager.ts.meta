@@ -1,0 +1,60 @@
+fileFormatVersion: 2
+guid: 1acb8ebdc1091db45a52d8962294261a
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    UnityEngine_UI_1 = require(\"UnityEngine.UI\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    GoodsManager_1 = require(\"../Goods/GoodsManager\");\r\nconst PlayerManager_1
+    = require(\"../Player/PlayerManager\");\r\nconst UIManager_1 = require(\"../UI/UIManager\");\r\nconst
+    JSONParser_1 = require(\"../Utils/JSONParser\");\r\nconst Building_1 = require(\"./Building\");\r\nclass
+    BuildingManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.buildingLevels = new Map();\r\n   
+    }\r\n    static GetInstance() {\r\n        if (BuildingManager.instance == undefined)
+    {\r\n            BuildingManager.instance = UnityEngine_1.GameObject.Find(\"BuildingManager\").GetComponent($typeof(BuildingManager));\r\n       
+    }\r\n        return this.instance;\r\n    }\r\n    Awake() {\r\n        this.gameObject.name
+    = \"BuildingManager\";\r\n    }\r\n    Start() {\r\n        this.Initialize();\r\n   
+    }\r\n    Initialize() {\r\n        this.LoadBuildings();\r\n    }\r\n    LoadBuildings()
+    {\r\n        this.data = JSONParser_1.default.ParseJSON(\"Configs/Buildings\");\r\n       
+    this.data.buildings.forEach((info, prefabId) => {\r\n            info.prefabBuilding
+    = UnityEngine_1.Resources.Load(\"Buildings/\" + info.prefabId);\r\n           
+    info.prefabIcon = UnityEngine_1.Resources.Load(\"Icons/\" + info.iconId);\r\n           
+    this.buildingLevels.set(info.prefabId, 0);\r\n            let button = UIManager_1.default.GetInstance().AddBuilding(info);\r\n           
+    button.onClick.AddListener(() => { this.Preview(info.prefabId); });\r\n       
+    });\r\n    }\r\n    Preview(id) {\r\n        if (this.currentPreview != undefined)
+    {\r\n            UnityEngine_1.GameObject.Destroy(this.currentPreview.gameObject);\r\n       
+    }\r\n        let building = this.data.buildings.get(id);\r\n        let dockPoint
+    = PlayerManager_1.default.dockPoint;\r\n        this.currentPreview = UnityEngine_1.GameObject.Instantiate(building.prefabBuilding,
+    dockPoint).transform;\r\n        this.currentPreview.gameObject.name = id;\r\n       
+    UIManager_1.default.GetInstance().ShowPreview(true, building.resourceCosts[this.GetBuildingLevel(id)]);\r\n   
+    }\r\n    GetBuildingLevel(id) {\r\n        return this.buildingLevels.get(id);\r\n   
+    }\r\n    Build() {\r\n        if (this.currentPreview == undefined) {\r\n           
+    return;\r\n        }\r\n        let id = this.currentPreview.gameObject.name;\r\n       
+    let info = this.data.buildings.get(id);\r\n        let costs = info.resourceCosts[this.GetBuildingLevel(id)];\r\n       
+    if (!GoodsManager_1.default.GetInstance().CheckCost(costs)) {\r\n           
+    console.error(\"Not Enough Funds!\");\r\n            UnityEngine_1.GameObject.Destroy(this.currentPreview.gameObject);\r\n           
+    UIManager_1.default.GetInstance().ShowPreview(false);\r\n            return;\r\n       
+    }\r\n        this.currentPreview.SetParent(null);\r\n        UIManager_1.default.GetInstance().ShowPreview(false);\r\n       
+    let building = this.currentPreview.GetComponent($typeof(Building_1.default));\r\n       
+    building.onBuild(info);\r\n        let curLevel = this.buildingLevels.get(id);\r\n       
+    this.buildingLevels.set(id, curLevel + 1);\r\n        GoodsManager_1.default.GetInstance().SpendCollectedCoods(costs);\r\n       
+    this.currentPreview = undefined;\r\n    }\r\n}\r\nexports.default = BuildingManager;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQnVpbGRpbmdNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiQnVpbGRpbmdNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQStEO0FBQy9ELG1EQUF3QztBQUN4QyxpREFBcUQ7QUFDckQsd0RBQWlEO0FBQ2pELDJEQUFvRDtBQUNwRCwrQ0FBd0M7QUFDeEMsb0RBQTZDO0FBQzdDLHlDQUFrQztBQWdCbEMsTUFBcUIsZUFBZ0IsU0FBUSxxQ0FBcUI7SUFBbEU7O1FBZ0JZLG1CQUFjLEdBQXdCLElBQUksR0FBRyxFQUFrQixDQUFDO0lBMkU1RSxDQUFDO0lBMUZVLE1BQU0sQ0FBQyxXQUFXO1FBRXJCLElBQUksZUFBZSxDQUFDLFFBQVEsSUFBSSxTQUFTLEVBQ3pDO1lBQ0ksZUFBZSxDQUFDLFFBQVEsR0FBRyx3QkFBVSxDQUFDLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxDQUFDLFlBQVksU0FBQyxlQUFlLEVBQUcsQ0FBQztTQUNqRztRQUVELE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBU0QsS0FBSztRQUVELElBQUksQ0FBQyxVQUFVLENBQUMsSUFBSSxHQUFHLGlCQUFpQixDQUFDO0lBQzdDLENBQUM7SUFFRCxLQUFLO1FBQ0QsSUFBSSxDQUFDLFVBQVUsRUFBRSxDQUFDO0lBQ3RCLENBQUM7SUFFTSxVQUFVO1FBRWIsSUFBSSxDQUFDLGFBQWEsRUFBRSxDQUFDO0lBQ3pCLENBQUM7SUFFTSxhQUFhO1FBRWhCLElBQUksQ0FBQyxJQUFJLEdBQUcsb0JBQVUsQ0FBQyxTQUFTLENBQWUsbUJBQW1CLENBQUMsQ0FBQztRQUVwRSxJQUFJLENBQUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxJQUFJLEVBQUUsUUFBUSxFQUFFLEVBQUU7WUFDM0MsSUFBSSxDQUFDLGNBQWMsR0FBRyx1QkFBUyxDQUFDLElBQUksQ0FBYSxZQUFZLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDO1lBQy9FLElBQUksQ0FBQyxVQUFVLEdBQUcsdUJBQVMsQ0FBQyxJQUFJLENBQWEsUUFBUSxHQUFHLElBQUksQ0FBQyxNQUFNLENBQUMsQ0FBQztZQUVyRSxJQUFJLENBQUMsY0FBYyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsUUFBUSxFQUFFLENBQUMsQ0FBQyxDQUFDO1lBRTFDLElBQUksTUFBTSxHQUFXLG1CQUFTLENBQUMsV0FBVyxFQUFFLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxDQUFDO1lBQy9ELE1BQU0sQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRSxHQUFHLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDdkUsQ0FBQyxDQUFDLENBQUM7SUFDUCxDQUFDO0lBRU0sT0FBTyxDQUFDLEVBQVU7UUFFckIsSUFBSSxJQUFJLENBQUMsY0FBYyxJQUFJLFNBQVMsRUFBRTtZQUFFLHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxjQUFjLENBQUMsVUFBVSxDQUFDLENBQUM7U0FBRTtRQUU3RixJQUFJLFFBQVEsR0FBaUIsSUFBSSxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxDQUFDO1FBQ3pELElBQUksU0FBUyxHQUFjLHVCQUFhLENBQUMsU0FBUyxDQUFDO1FBQ25ELElBQUksQ0FBQyxjQUFjLEdBQUcsd0JBQVUsQ0FBQyxXQUFXLENBQWEsUUFBUSxDQUFDLGNBQWMsRUFBRSxTQUFTLENBQUMsQ0FBQyxTQUFTLENBQUM7UUFDdkcsSUFBSSxDQUFDLGNBQWMsQ0FBQyxVQUFVLENBQUMsSUFBSSxHQUFHLEVBQUUsQ0FBQztRQUN6QyxtQkFBUyxDQUFDLFdBQVcsRUFBRSxDQUFDLFdBQVcsQ0FBQyxJQUFJLEVBQUUsUUFBUSxDQUFDLGFBQWEsQ0FBQyxJQUFJLENBQUMsZ0JBQWdCLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQyxDQUFDO0lBQ2pHLENBQUM7SUFFTSxnQkFBZ0IsQ0FBQyxFQUFVO1FBRTlCLE9BQU8sSUFBSSxDQUFDLGNBQWMsQ0FBQyxHQUFHLENBQUMsRUFBRSxDQUFDLENBQUM7SUFDdkMsQ0FBQztJQUVNLEtBQUs7UUFFUixJQUFJLElBQUksQ0FBQyxjQUFjLElBQUksU0FBUyxFQUFFO1lBQUMsT0FBTztTQUFDO1FBRS9DLElBQUksRUFBRSxHQUFXLElBQUksQ0FBQyxjQUFjLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQztRQUNyRCxJQUFJLElBQUksR0FBaUIsSUFBSSxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxDQUFDO1FBQ3JELElBQUksS0FBSyxHQUFhLElBQUksQ0FBQyxhQUFhLENBQUMsSUFBSSxDQUFDLGdCQUFnQixDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUM7UUFFcEUsSUFBSSxDQUFDLHNCQUFZLENBQUMsV0FBVyxFQUFFLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxFQUNoRDtZQUNJLE9BQU8sQ0FBQyxLQUFLLENBQUMsbUJBQW1CLENBQUMsQ0FBQztZQUNuQyx3QkFBVSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsY0FBYyxDQUFDLFVBQVUsQ0FBQyxDQUFDO1lBQ25ELG1CQUFTLENBQUMsV0FBVyxFQUFFLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxDQUFDO1lBQzNDLE9BQU87U0FDVjtRQUVELElBQUksQ0FBQyxjQUFjLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ3BDLG1CQUFTLENBQUMsV0FBVyxFQUFFLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBRTNDLElBQUksUUFBUSxHQUFhLElBQUksQ0FBQyxjQUFjLENBQUMsWUFBWSxTQUFDLGtCQUFRLEVBQUcsQ0FBQztRQUV0RSxRQUFRLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ3ZCLElBQUksUUFBUSxHQUFHLElBQUksQ0FBQyxjQUFjLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxDQUFDO1FBQzNDLElBQUksQ0FBQyxjQUFjLENBQUMsR0FBRyxDQUFDLEVBQUUsRUFBRSxRQUFRLEdBQUcsQ0FBQyxDQUFDLENBQUM7UUFDMUMsc0JBQVksQ0FBQyxXQUFXLEVBQUUsQ0FBQyxtQkFBbUIsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUV0RCxJQUFJLENBQUMsY0FBYyxHQUFHLFNBQVMsQ0FBQztJQUNwQyxDQUFDO0NBQ0o7QUEzRkQsa0NBMkZDIn0=","assetPath":"Assets/Scripts/Buildings/BuildingManager.ts","manifest":{"properties":[],"name":"BuildingManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: f4030248b917272b51c9466492e46a94
+  onlyWriteTrigger: 0

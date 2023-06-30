@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 03b3336b8c094d74e878d49ce9616e9b
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst Unit_1 = require(\"../Units/Unit\");\r\nconst
+    UnitGoodsCollector_1 = require(\"../Units/UnitGoodsCollector\");\r\nclass Building
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    onBuild(info) {\r\n       
+    this.info = info;\r\n        this.unit = UnityEngine_1.GameObject.Instantiate(this.unitPrefab,
+    this.transform.position, this.transform.rotation).GetComponent($typeof(UnitGoodsCollector_1.default));\r\n       
+    this.unit.UnitAction();\r\n    }\r\n}\r\nexports.default = Building;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQnVpbGRpbmcuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJCdWlsZGluZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUF5QztBQUN6QyxpREFBcUQ7QUFDckQsd0NBQWlDO0FBQ2pDLG9FQUE2RDtBQUc3RCxNQUFxQixRQUFTLFNBQVEscUNBQXFCO0lBTWhELE9BQU8sQ0FBQyxJQUFrQjtRQUU3QixJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQztRQUNqQixJQUFJLENBQUMsSUFBSSxHQUFHLHdCQUFVLENBQUMsV0FBVyxDQUFhLElBQUksQ0FBQyxVQUFVLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxZQUFZLFNBQUMsNEJBQWtCLEVBQUcsQ0FBQztRQUNySixJQUFJLENBQUMsSUFBSSxDQUFDLFVBQVUsRUFBRSxDQUFDO0lBQzNCLENBQUM7Q0FFSjtBQWJELDJCQWFDIn0=","assetPath":"Assets/Scripts/Buildings/Building.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"unitPrefab","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Building","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 587ff83eb36f1cbbb2a72ac9b47c6469
+  onlyWriteTrigger: 0

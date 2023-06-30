@@ -1,0 +1,41 @@
+fileFormatVersion: 2
+guid: 62112f8db7a8f2c4fa898b2e524ab629
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst GoodsManager_1 = require(\"./GoodsManager\");\r\nclass
+    Good extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n       
+    super(...arguments);\r\n        this.value = 1;\r\n        this.respawnTime =
+    3.0;\r\n    }\r\n    Awake() {\r\n        this.Initialize();\r\n    }\r\n   
+    Update() {\r\n    }\r\n    Initialize() {\r\n        this.status = GoodsManager_1.GoodsStatus.READY;\r\n       
+    this.startingPos = this.transform.position;\r\n        GoodsManager_1.default.GetInstance().AddGood(this);\r\n   
+    }\r\n    OnDestroy() {\r\n        GoodsManager_1.default.GetInstance().RemoveGood(this);\r\n   
+    }\r\n    MarkPickup() {\r\n        this.status = GoodsManager_1.GoodsStatus.MARKEDFORPICKUP;\r\n   
+    }\r\n    Pickup(dock) {\r\n        //ParentObject to Docking Point\r\n       
+    this.transform.SetParent(dock, true);\r\n        this.status = GoodsManager_1.GoodsStatus.INTRANSIT;\r\n   
+    }\r\n    Deliver() {\r\n        //Parent object to GoodsManager\r\n        this.transform.SetParent(GoodsManager_1.default.GetInstance().transform);\r\n       
+    this.status = GoodsManager_1.GoodsStatus.DELIVERED;\r\n        this.goodRenderer.gameObject.SetActive(false);\r\n       
+    GoodsManager_1.default.GetInstance().CollectGood(this);\r\n        this.StartCoroutine(this.Respawn());\r\n   
+    }\r\n    *Respawn() {\r\n        yield new UnityEngine_1.WaitForSeconds(this.respawnTime);\r\n       
+    //Play RespawnAnimation\r\n        this.status = GoodsManager_1.GoodsStatus.READY;\r\n       
+    this.transform.position = this.startingPos;\r\n        this.goodRenderer.gameObject.SetActive(true);\r\n   
+    }\r\n}\r\nexports.default = Good;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR29vZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkdvb2QudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBMEU7QUFDMUUsaURBQXFEO0FBQ3JELGlEQUFxRTtBQUVyRSxNQUFxQixJQUFLLFNBQVEscUNBQXFCO0lBQXZEOztRQUlXLFVBQUssR0FBVyxDQUFDLENBQUM7UUFDbEIsZ0JBQVcsR0FBVyxHQUFHLENBQUM7SUF5RHJDLENBQUM7SUFwREcsS0FBSztRQUVELElBQUksQ0FBQyxVQUFVLEVBQUUsQ0FBQztJQUN0QixDQUFDO0lBRUQsTUFBTTtJQUdOLENBQUM7SUFFTSxVQUFVO1FBRWIsSUFBSSxDQUFDLE1BQU0sR0FBRywwQkFBVyxDQUFDLEtBQUssQ0FBQztRQUNoQyxJQUFJLENBQUMsV0FBVyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDO1FBQzNDLHNCQUFZLENBQUMsV0FBVyxFQUFFLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDO0lBQzdDLENBQUM7SUFFTSxTQUFTO1FBRVosc0JBQVksQ0FBQyxXQUFXLEVBQUUsQ0FBQyxVQUFVLENBQUMsSUFBSSxDQUFDLENBQUM7SUFDaEQsQ0FBQztJQUVNLFVBQVU7UUFFYixJQUFJLENBQUMsTUFBTSxHQUFHLDBCQUFXLENBQUMsZUFBZSxDQUFDO0lBQzlDLENBQUM7SUFFTSxNQUFNLENBQUMsSUFBZTtRQUV6QiwrQkFBK0I7UUFDL0IsSUFBSSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsSUFBSSxFQUFFLElBQUksQ0FBQyxDQUFDO1FBQ3JDLElBQUksQ0FBQyxNQUFNLEdBQUcsMEJBQVcsQ0FBQyxTQUFTLENBQUM7SUFDeEMsQ0FBQztJQUVNLE9BQU87UUFFViwrQkFBK0I7UUFDL0IsSUFBSSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsc0JBQVksQ0FBQyxXQUFXLEVBQUUsQ0FBQyxTQUFTLENBQUMsQ0FBQztRQUMvRCxJQUFJLENBQUMsTUFBTSxHQUFHLDBCQUFXLENBQUMsU0FBUyxDQUFDO1FBQ3BDLElBQUksQ0FBQyxZQUFZLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUM5QyxzQkFBWSxDQUFDLFdBQVcsRUFBRSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUM3QyxJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxPQUFPLEVBQUUsQ0FBQyxDQUFDO0lBQ3hDLENBQUM7SUFFTSxDQUFDLE9BQU87UUFFWCxNQUFNLElBQUksNEJBQWMsQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLENBQUM7UUFDM0MsdUJBQXVCO1FBQ3ZCLElBQUksQ0FBQyxNQUFNLEdBQUcsMEJBQVcsQ0FBQyxLQUFLLENBQUM7UUFDaEMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLFdBQVcsQ0FBQztRQUMzQyxJQUFJLENBQUMsWUFBWSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLENBQUM7SUFDakQsQ0FBQztDQUNKO0FBOURELHVCQThEQyJ9","assetPath":"Assets/Scripts/Goods/Good.ts","manifest":{"properties":[{"assembly":"","name":"type","type":"GoodsType","isArray":false,"initValue":[],"enumKeys":["TYPE1","TYPE2","TYPE3","TYPE4","MAX"],"enumValues":["0","1","2","3","4"],"attributes":[]},{"assembly":"","name":"status","type":"GoodsStatus","isArray":false,"initValue":[],"enumKeys":["READY","MARKEDFORPICKUP","INTRANSIT","DELIVERED","MAX"],"enumValues":["0","1","2","3","4"],"attributes":[]},{"assembly":"mscorlib","name":"value","type":"System.Single","isArray":false,"initValue":["1"],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"respawnTime","type":"System.Single","isArray":false,"initValue":["3"],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"goodRenderer","type":"UnityEngine.Renderer","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Good","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: af8f6991a881ae7dde9c134570ee5e98
+  onlyWriteTrigger: 0

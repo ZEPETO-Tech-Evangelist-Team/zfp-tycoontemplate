@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 7acc01612a692154c98d732bff69d38a
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nexports.UnitType = void 0;\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Agent_1 = require(\"./Agent\");\r\nvar UnitType;\r\n(function (UnitType) {\r\n   
+    UnitType[UnitType[\"GoodsCollector\"] = 0] = \"GoodsCollector\";\r\n})(UnitType
+    = exports.UnitType || (exports.UnitType = {}));\r\nclass Unit extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n}\r\nexports.default = Unit;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVW5pdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlVuaXQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsaURBQXFEO0FBQ3JELG1DQUE0QjtBQUU1QixJQUFZLFFBR1g7QUFIRCxXQUFZLFFBQVE7SUFFaEIsMkRBQWMsQ0FBQTtBQUNsQixDQUFDLEVBSFcsUUFBUSxHQUFSLGdCQUFRLEtBQVIsZ0JBQVEsUUFHbkI7QUFFRCxNQUE4QixJQUFLLFNBQVEscUNBQXFCO0NBSS9EO0FBSkQsdUJBSUMifQ==","assetPath":"Assets/Scripts/Unit.ts","manifest":{"properties":[{"assembly":"","name":"type","type":"UnitType","isArray":false,"initValue":[],"enumKeys":["GoodsCollector"],"enumValues":["0"],"attributes":[]}],"name":"Unit","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 572a5e0096fe34830be21b0b5895cf0d
+  onlyWriteTrigger: 0

@@ -1,0 +1,67 @@
+{
+  "buildings": {
+    "dataType": "Map",
+    "value": [
+      [
+        "CowboyHouse_blue",
+        {
+          "prefabId": "CowboyHouse_blue",
+          "iconId": "Icon_CowboyHouse_blue",
+          "resourceCosts": [
+            [0,0,0,0],
+            [10,0,0,0],
+            [25,10,0,0],
+            [50,20,10,0],
+            [100,30,20,10],
+            [200,40,30,20]
+          ]
+        }
+      ],
+      [
+        "CowboyHouse_grey",
+        {
+          "prefabId": "CowboyHouse_grey",
+          "iconId": "Icon_CowboyHouse_grey",
+          "resourceCosts": [
+            [0,25,0,0],
+            [10,0,0,0],
+            [25,10,0,0],
+            [50,20,10,0],
+            [100,30,20,10],
+            [200,40,30,20]
+          ]
+        }
+      ],
+      [
+        "CowboyHouse_red",
+        {
+          "prefabId": "CowboyHouse_red",
+          "iconId": "Icon_CowboyHouse_red",
+          "resourceCosts": [
+            [0,0,25,0],
+            [10,0,0,0],
+            [25,10,0,0],
+            [50,20,10,0],
+            [100,30,20,10],
+            [200,40,30,20]
+          ]
+        }
+      ],
+      [
+        "CowboyHouse_yellow",
+        {
+          "prefabId": "CowboyHouse_yellow",
+          "iconId": "Icon_CowboyHouse_yellow",
+          "resourceCosts": [
+            [0,0,0,25],
+            [10,0,0,0],
+            [25,10,0,0],
+            [50,20,10,0],
+            [100,30,20,10],
+            [200,40,30,20]
+          ]
+        }
+      ]
+    ]
+  }
+}

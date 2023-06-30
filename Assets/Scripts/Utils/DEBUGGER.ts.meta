@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: b7d913b67273cca4aa360d48b3718c16
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst Agent_1 = require(\"../Units/Agent\");\r\nconst
+    Unit_1 = require(\"../Units/Unit\");\r\nconst UnitGoodsCollector_1 = require(\"../Units/UnitGoodsCollector\");\r\nclass
+    DEBUGGER extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    GetRandomUnit()
+    {\r\n        let rand = Math.floor(Math.random() * this.units.length);\r\n       
+    let unit = UnityEngine_1.GameObject.Instantiate(this.units[rand], this.spawnPosition.position,
+    this.spawnPosition.rotation).GetComponent($typeof(UnitGoodsCollector_1.default));\r\n       
+    return unit;\r\n    }\r\n    Start() {\r\n    }\r\n    SpawnUnit() {\r\n       
+    let unit = this.GetRandomUnit();\r\n        unit.UnitAction();\r\n    }\r\n   
+    Update() {\r\n        if (UnityEngine_1.Input.GetKeyDown(UnityEngine_1.KeyCode.F))
+    {\r\n            this.SpawnUnit();\r\n        }\r\n    }\r\n}\r\nexports.default
+    = DEBUGGER;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiREVCVUdHRVIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJERUJVR0dFUi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUNyRCw2Q0FBa0U7QUFDbEUsMENBQW1DO0FBQ25DLHdDQUFpQztBQUNqQyxvRUFBNkQ7QUFFN0QsTUFBcUIsUUFBUyxTQUFRLHFDQUFxQjtJQUtoRCxhQUFhO1FBRWhCLElBQUksSUFBSSxHQUFZLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLE1BQU0sRUFBRSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsTUFBTSxDQUFDLENBQUM7UUFDbEUsSUFBSSxJQUFJLEdBQXdCLHdCQUFVLENBQUMsV0FBVyxDQUFhLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLEVBQUUsSUFBSSxDQUFDLGFBQWEsQ0FBQyxRQUFRLEVBQUUsSUFBSSxDQUFDLGFBQWEsQ0FBQyxRQUFRLENBQUMsQ0FBQyxZQUFZLFNBQUMsNEJBQWtCLEVBQUcsQ0FBQztRQUNsTCxPQUFPLElBQUksQ0FBQztJQUNoQixDQUFDO0lBRUQsS0FBSztJQUVMLENBQUM7SUFFTSxTQUFTO1FBRVosSUFBSSxJQUFJLEdBQVMsSUFBSSxDQUFDLGFBQWEsRUFBRSxDQUFDO1FBQ3RDLElBQUksQ0FBQyxVQUFVLEVBQUUsQ0FBQztJQUN0QixDQUFDO0lBRUQsTUFBTTtRQUVGLElBQUcsbUJBQUssQ0FBQyxVQUFVLENBQUMscUJBQU8sQ0FBQyxDQUFDLENBQUMsRUFDOUI7WUFDSSxJQUFJLENBQUMsU0FBUyxFQUFFLENBQUM7U0FDcEI7SUFDTCxDQUFDO0NBQ0o7QUE3QkQsMkJBNkJDIn0=","assetPath":"Assets/Scripts/Utils/DEBUGGER.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"units","type":"UnityEngine.GameObject[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[{"name":"Header","args":["\"Goods
+    Collector Unit Debugging\""]}]},{"assembly":"UnityEngine.CoreModule","name":"spawnPosition","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"DEBUGGER","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: cc17c84b2aa44c64d63949fdaf9a2581
+  onlyWriteTrigger: 0

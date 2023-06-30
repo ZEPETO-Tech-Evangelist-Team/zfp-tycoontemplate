@@ -1,0 +1,38 @@
+fileFormatVersion: 2
+guid: d08c0daec37280947874134e5ae712dc
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst ZEPETO_Character_Controller_1
+    = require(\"ZEPETO.Character.Controller\");\r\nconst ZEPETO_World_1 = require(\"ZEPETO.World\");\r\nclass
+    PlayerManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start()
+    {\r\n        let spawnInfo = new ZEPETO_Character_Controller_1.SpawnInfo();\r\n       
+    spawnInfo.position = this.spawnPoint.position;\r\n        spawnInfo.rotation
+    = this.spawnPoint.rotation;\r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithUserId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    ZEPETO_World_1.WorldService.userId, spawnInfo, true);\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\r\n            let localPlayer = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n           
+    let playerTransform = localPlayer.zepetoPlayer.character.transform;\r\n           
+    PlayerManager.dockPoint = new UnityEngine_1.GameObject(\"DockPoint\").transform;\r\n           
+    PlayerManager.dockPoint.SetParent(playerTransform, false);\r\n            PlayerManager.dockPoint.position
+    = UnityEngine_1.Vector3.op_Addition(PlayerManager.dockPoint.position, UnityEngine_1.Vector3.op_Multiply(playerTransform.forward,
+    1.5));\r\n        });\r\n    }\r\n}\r\nexports.default = PlayerManager;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGxheWVyTWFuYWdlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBsYXllck1hbmFnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBMkU7QUFDM0UsaURBQW1EO0FBQ25ELDZFQUFrRjtBQUNsRiwrQ0FBMEM7QUFFMUMsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQU01RCxLQUFLO1FBQ0QsSUFBSSxTQUFTLEdBQUcsSUFBSSx1Q0FBUyxFQUFFLENBQUM7UUFDaEMsU0FBUyxDQUFDLFFBQVEsR0FBRyxJQUFJLENBQUMsVUFBVSxDQUFDLFFBQVEsQ0FBQztRQUM5QyxTQUFTLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUMsUUFBUSxDQUFDO1FBQzlDLGlFQUF1QixzQkFBc0IsQ0FBN0MsMkNBQWEsQ0FBQyxRQUFRLEVBQXdCLDJCQUFZLENBQUMsTUFBTSxFQUFFLFNBQVMsRUFBRSxJQUFJLEVBQUU7UUFFcEYsMkNBQWEsQ0FBQyxRQUFRLENBQUMsa0JBQWtCLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUN2RCxJQUFJLFdBQVcsR0FBZ0IsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDO1lBQ2xFLElBQUksZUFBZSxHQUFlLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFNBQVMsQ0FBQztZQUMvRSxhQUFhLENBQUMsU0FBUyxHQUFHLElBQUksd0JBQVUsQ0FBQyxXQUFXLENBQUMsQ0FBQyxTQUFTLENBQUM7WUFDaEUsYUFBYSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUMsZUFBZSxFQUFFLEtBQUssQ0FBQyxDQUFDO1lBQzFELGFBQWEsQ0FBQyxTQUFTLENBQUMsUUFBUSxHQXRCRyxxQkFBTyxDQTBCNGdwQixXQUFZLENBSmxrcEIsYUFBYSxDQUFDLFNBQVMsQ0FBQyxRQUFRLEVBdEJHLHFCQUFPLENBMEI0eXBCLFdBQVksQ0FKOXpwQixlQUFlLENBQUMsT0FBTyxFQUFHLEdBQUcsR0FBQztRQUN0RSxDQUFDLENBQUMsQ0FBQztJQUNQLENBQUM7Q0FFSjtBQXJCRCxnQ0FxQkMifQ==","assetPath":"Assets/Scripts/Player/PlayerManager.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"spawnPoint","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"PlayerManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: bfc0dfbd0a9b30e682622572ad38ed54
+  onlyWriteTrigger: 0

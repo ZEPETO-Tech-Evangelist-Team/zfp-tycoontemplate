@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 6570f26641592a14ebfe5ebe68d09021
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nclass
+    JSONParser {\r\n    static ParseJSON(fileName) {\r\n        let parsedData;\r\n       
+    let file = UnityEngine_1.Resources.Load(fileName);\r\n        console.log(file.ToString());\r\n       
+    parsedData = JSON.parse(file.ToString(), this.reviver);\r\n        console.log(typeof
+    (parsedData));\r\n        return parsedData;\r\n    }\r\n    static replacer(key,
+    value) {\r\n        if (value instanceof Map) {\r\n            return {\r\n               
+    dataType: ''Map'',\r\n                value: Array.from(value.entries()), //
+    or with spread: value: [...value]\r\n            };\r\n        }\r\n        else
+    {\r\n            return value;\r\n        }\r\n    }\r\n    static reviver(key,
+    value) {\r\n        if (typeof value === ''object'' && value !== null) {\r\n           
+    if (value.dataType === ''Map'') {\r\n                return new Map(value.value);\r\n           
+    }\r\n        }\r\n        return value;\r\n    }\r\n}\r\nexports.default = JSONParser;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSlNPTlBhcnNlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkpTT05QYXJzZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBa0Q7QUFFbEQsTUFBcUIsVUFBVTtJQUNwQixNQUFNLENBQUMsU0FBUyxDQUFJLFFBQWdCO1FBRXZDLElBQUksVUFBYSxDQUFDO1FBQ2xCLElBQUksSUFBSSxHQUFjLHVCQUFTLENBQUMsSUFBSSxDQUFZLFFBQVEsQ0FBQyxDQUFDO1FBQzFELE9BQU8sQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLFFBQVEsRUFBRSxDQUFDLENBQUM7UUFDN0IsVUFBVSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLFFBQVEsRUFBRSxFQUFFLElBQUksQ0FBQyxPQUFPLENBQU0sQ0FBQztRQUM1RCxPQUFPLENBQUMsR0FBRyxDQUFDLE9BQU0sQ0FBQyxVQUFVLENBQUMsQ0FBQyxDQUFDO1FBQ2hDLE9BQU8sVUFBVSxDQUFDO0lBQ3RCLENBQUM7SUFFTSxNQUFNLENBQUMsUUFBUSxDQUFDLEdBQUcsRUFBRSxLQUFLO1FBQzdCLElBQUcsS0FBSyxZQUFZLEdBQUcsRUFBRTtZQUNyQixPQUFPO2dCQUNILFFBQVEsRUFBRSxLQUFLO2dCQUNmLEtBQUssRUFBRSxLQUFLLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxPQUFPLEVBQUUsQ0FBQyxFQUFFLG9DQUFvQzthQUMzRSxDQUFDO1NBQ0w7YUFBTTtZQUNILE9BQU8sS0FBSyxDQUFDO1NBQ2hCO0lBQ0wsQ0FBQztJQUVNLE1BQU0sQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLEtBQUs7UUFDNUIsSUFBRyxPQUFPLEtBQUssS0FBSyxRQUFRLElBQUksS0FBSyxLQUFLLElBQUksRUFBRTtZQUM1QyxJQUFJLEtBQUssQ0FBQyxRQUFRLEtBQUssS0FBSyxFQUFFO2dCQUMxQixPQUFPLElBQUksR0FBRyxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQUMsQ0FBQzthQUMvQjtTQUNKO1FBQ0QsT0FBTyxLQUFLLENBQUM7SUFDakIsQ0FBQztDQUNKO0FBOUJELDZCQThCQyJ9","assetPath":"Assets/Scripts/Utils/JSONParser.ts","manifest":{"properties":[],"name":"JSONParser","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: d2e5b0768222c88c4289c074df90f60e
+  onlyWriteTrigger: 0

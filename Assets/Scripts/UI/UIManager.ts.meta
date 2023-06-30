@@ -1,0 +1,48 @@
+fileFormatVersion: 2
+guid: 48ae39bc0ff3fe545b3eedb87157f135
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst GoodsManager_1 = require(\"../Goods/GoodsManager\");\r\nconst
+    BuildingManager_1 = require(\"../Buildings/BuildingManager\");\r\nconst UnityEngine_UI_1
+    = require(\"UnityEngine.UI\");\r\nclass UIManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    static GetInstance() {\r\n        if (UIManager.instance == undefined)
+    {\r\n            UIManager.instance = UnityEngine_1.GameObject.Find(\"UIManager\").GetComponent($typeof(UIManager));\r\n       
+    }\r\n        return this.instance;\r\n    }\r\n    Awake() {\r\n        this.gameObject.name
+    = \"UIManager\";\r\n    }\r\n    Start() {\r\n        this.UpdateUI();\r\n       
+    this.Initialize();\r\n    }\r\n    Initialize() {\r\n        this.buildButton.onClick.AddListener(()
+    => { BuildingManager_1.default.GetInstance().Build(); });\r\n        this.ShowPreview(false);\r\n   
+    }\r\n    AddBuilding(buildingInfo) {\r\n        let icon = UnityEngine_1.GameObject.Instantiate(buildingInfo.prefabIcon).GetComponent($typeof(UnityEngine_UI_1.Button));\r\n       
+    icon.transform.SetParent(this.buildingScrollContent);\r\n        return icon;\r\n   
+    }\r\n    UpdateUI() {\r\n        let gm = GoodsManager_1.default.GetInstance();\r\n       
+    this.goods1Value.text = gm.GetCollectedGoodValue(GoodsManager_1.GoodsType.TYPE1).toString();\r\n       
+    this.goods2Value.text = gm.GetCollectedGoodValue(GoodsManager_1.GoodsType.TYPE2).toString();\r\n       
+    this.goods3Value.text = gm.GetCollectedGoodValue(GoodsManager_1.GoodsType.TYPE3).toString();\r\n       
+    this.goods4Value.text = gm.GetCollectedGoodValue(GoodsManager_1.GoodsType.TYPE4).toString();\r\n   
+    }\r\n    ShowPreview(b, costs) {\r\n        let gm = GoodsManager_1.default.GetInstance();\r\n       
+    this.buildButton.gameObject.SetActive(b);\r\n        this.cost1Value.gameObject.SetActive(b);\r\n       
+    this.cost2Value.gameObject.SetActive(b);\r\n        this.cost3Value.gameObject.SetActive(b);\r\n       
+    this.cost4Value.gameObject.SetActive(b);\r\n        if (b && costs != undefined)
+    {\r\n            this.cost1Value.text = costs[0].toString();\r\n            this.cost2Value.text
+    = costs[1].toString();\r\n            this.cost3Value.text = costs[2].toString();\r\n           
+    this.cost4Value.text = costs[3].toString();\r\n        }\r\n    }\r\n}\r\nexports.default
+    = UIManager;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVUlNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVUlNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQ0EsaURBQXFEO0FBQ3JELDZDQUFrRDtBQUNsRCx3REFBZ0U7QUFDaEUsa0VBQTZFO0FBQzdFLG1EQUF3QztBQUl4QyxNQUFxQixTQUFVLFNBQVEscUNBQXFCO0lBQ2pELE1BQU0sQ0FBQyxXQUFXO1FBRXJCLElBQUksU0FBUyxDQUFDLFFBQVEsSUFBSSxTQUFTLEVBQ25DO1lBQ0ksU0FBUyxDQUFDLFFBQVEsR0FBRyx3QkFBVSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsQ0FBQyxZQUFZLFNBQUMsU0FBUyxFQUFHLENBQUM7U0FDL0U7UUFFRCxPQUFPLElBQUksQ0FBQyxRQUFRLENBQUM7SUFDekIsQ0FBQztJQWtCRCxLQUFLO1FBRUQsSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLEdBQUcsV0FBVyxDQUFDO0lBQ3ZDLENBQUM7SUFFRCxLQUFLO1FBRUQsSUFBSSxDQUFDLFFBQVEsRUFBRSxDQUFDO1FBQ2hCLElBQUksQ0FBQyxVQUFVLEVBQUUsQ0FBQztJQUN0QixDQUFDO0lBRU0sVUFBVTtRQUViLElBQUksQ0FBQyxXQUFXLENBQUMsT0FBTyxDQUFDLFdBQVcsQ0FBQyxHQUFHLEVBQUUsR0FBRSx5QkFBZSxDQUFDLFdBQVcsRUFBRSxDQUFDLEtBQUssRUFBRSxDQUFDLENBQUEsQ0FBQyxDQUFDLENBQUE7UUFDcEYsSUFBSSxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQztJQUM1QixDQUFDO0lBRU0sV0FBVyxDQUFDLFlBQTBCO1FBRXpDLElBQUksSUFBSSxHQUFXLHdCQUFVLENBQUMsV0FBVyxDQUFhLFlBQVksQ0FBQyxVQUFVLENBQUMsQ0FBQyxZQUFZLFNBQUMsdUJBQU0sRUFBRyxDQUFDO1FBQ3RHLElBQUksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxxQkFBcUIsQ0FBQyxDQUFDO1FBQ3JELE9BQU8sSUFBSSxDQUFDO0lBQ2hCLENBQUM7SUFFTSxRQUFRO1FBRVgsSUFBSSxFQUFFLEdBQUcsc0JBQVksQ0FBQyxXQUFXLEVBQUUsQ0FBQztRQUNwQyxJQUFJLENBQUMsV0FBVyxDQUFDLElBQUksR0FBRyxFQUFFLENBQUMscUJBQXFCLENBQUMsd0JBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxRQUFRLEVBQUUsQ0FBQztRQUM3RSxJQUFJLENBQUMsV0FBVyxDQUFDLElBQUksR0FBRyxFQUFFLENBQUMscUJBQXFCLENBQUMsd0JBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxRQUFRLEVBQUUsQ0FBQztRQUM3RSxJQUFJLENBQUMsV0FBVyxDQUFDLElBQUksR0FBRyxFQUFFLENBQUMscUJBQXFCLENBQUMsd0JBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxRQUFRLEVBQUUsQ0FBQztRQUM3RSxJQUFJLENBQUMsV0FBVyxDQUFDLElBQUksR0FBRyxFQUFFLENBQUMscUJBQXFCLENBQUMsd0JBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxRQUFRLEVBQUUsQ0FBQztJQUNqRixDQUFDO0lBRU0sV0FBVyxDQUFDLENBQU8sRUFBRSxLQUFnQjtRQUV4QyxJQUFJLEVBQUUsR0FBRyxzQkFBWSxDQUFDLFdBQVcsRUFBRSxDQUFDO1FBQ3BDLElBQUksQ0FBQyxXQUFXLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUN6QyxJQUFJLENBQUMsVUFBVSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDeEMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBQ3hDLElBQUksQ0FBQyxVQUFVLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUN4QyxJQUFJLENBQUMsVUFBVSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFFeEMsSUFBSSxDQUFDLElBQUksS0FBSyxJQUFJLFNBQVMsRUFDM0I7WUFDSSxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksR0FBRyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxFQUFFLENBQUM7WUFDM0MsSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLEdBQUcsS0FBSyxDQUFDLENBQUMsQ0FBQyxDQUFDLFFBQVEsRUFBRSxDQUFDO1lBQzNDLElBQUksQ0FBQyxVQUFVLENBQUMsSUFBSSxHQUFHLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxRQUFRLEVBQUUsQ0FBQztZQUMzQyxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksR0FBRyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxFQUFFLENBQUM7U0FDOUM7SUFFTCxDQUFDO0NBRUo7QUEvRUQsNEJBK0VDIn0=","assetPath":"Assets/Scripts/UI/UIManager.ts","manifest":{"properties":[{"assembly":"Unity.TextMeshPro","name":"goods1Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"goods2Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"goods3Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"goods4Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"cost1Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"cost2Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"cost3Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"cost4Value","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"buildingScrollContent","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.UI","name":"buildButton","type":"UnityEngine.UI.Button","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"UIManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 7c59e1d17cf5673487f4480933f5ab6c
+  onlyWriteTrigger: 0

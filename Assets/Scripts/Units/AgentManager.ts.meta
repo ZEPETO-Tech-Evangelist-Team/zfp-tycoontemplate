@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: f2082b12cfa847d45b9660677a3d7b8d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    UnityEngine_AI_1 = require(\"UnityEngine.AI\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UniqueIDGenerator_1 = require(\"../Utils/UniqueIDGenerator\");\r\nconst Agent_1
+    = require(\"./Agent\");\r\nclass AgentManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.spawnedAgents
+    = new Map();\r\n    }\r\n    static GetInstance() {\r\n        if (AgentManager.instance
+    == undefined) {\r\n            AgentManager.instance = UnityEngine_1.GameObject.Find(\"AgentManager\").GetComponent($typeof(AgentManager));\r\n       
+    }\r\n        return this.instance;\r\n    }\r\n    Awake() {\r\n        this.gameObject.name
+    = \"AgentManager\";\r\n    }\r\n    AddAgent(agent) {\r\n        agent.gameObject.name
+    = UniqueIDGenerator_1.default();\r\n        this.spawnedAgents.set(agent.name,
+    agent);\r\n        return agent;\r\n    }\r\n    RemoveAgent(agent) {\r\n       
+    this.spawnedAgents.delete(agent.name);\r\n        return agent;\r\n    }\r\n}\r\nexports.default
+    = AgentManager;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQWdlbnRNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiQWdlbnRNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQXNGO0FBQ3RGLG1EQUE4QztBQUM5QyxpREFBcUQ7QUFDckQsa0VBQXFEO0FBQ3JELG1DQUE0QjtBQUU1QixNQUFxQixZQUFhLFNBQVEscUNBQXFCO0lBQS9EOztRQVdZLGtCQUFhLEdBQXVCLElBQUksR0FBRyxFQUFpQixDQUFDO0lBb0J6RSxDQUFDO0lBOUJVLE1BQU0sQ0FBQyxXQUFXO1FBRXJCLElBQUksWUFBWSxDQUFDLFFBQVEsSUFBSSxTQUFTLEVBQ3RDO1lBQ0ksWUFBWSxDQUFDLFFBQVEsR0FBRyx3QkFBVSxDQUFDLElBQUksQ0FBQyxjQUFjLENBQUMsQ0FBQyxZQUFZLFNBQUMsWUFBWSxFQUFHLENBQUM7U0FDeEY7UUFFRCxPQUFPLElBQUksQ0FBQyxRQUFRLENBQUM7SUFDekIsQ0FBQztJQU1ELEtBQUs7UUFDRCxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksR0FBRyxjQUFjLENBQUM7SUFDMUMsQ0FBQztJQUVNLFFBQVEsQ0FBQyxLQUFZO1FBRXhCLEtBQUssQ0FBQyxVQUFVLENBQUMsSUFBSSxHQUFHLDJCQUFXLEVBQUUsQ0FBQztRQUN0QyxJQUFJLENBQUMsYUFBYSxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsSUFBSSxFQUFFLEtBQUssQ0FBQyxDQUFDO1FBQzFDLE9BQU8sS0FBSyxDQUFDO0lBQ2pCLENBQUM7SUFFTSxXQUFXLENBQUMsS0FBWTtRQUUzQixJQUFJLENBQUMsYUFBYSxDQUFDLE1BQU0sQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLENBQUM7UUFDdEMsT0FBTyxLQUFLLENBQUM7SUFDakIsQ0FBQztDQUNKO0FBL0JELCtCQStCQyJ9","assetPath":"Assets/Scripts/Units/AgentManager.ts","manifest":{"properties":[],"name":"AgentManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: d5993fa6f8931fe5ed7f012325f4df2f
+  onlyWriteTrigger: 0

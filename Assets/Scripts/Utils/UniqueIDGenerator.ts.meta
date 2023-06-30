@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 5ce092b5f908c2e47aa58ddb2bf2601c
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nfunction genUniqueId() {\r\n    const dateStr = Date\r\n       
+    .now()\r\n        .toString(36); // convert num to base 36 and stringify\r\n   
+    const randomStr = Math\r\n        .random()\r\n        .toString(36)\r\n       
+    .substring(2, 8); // start at index 2 to skip decimal point\r\n    return `${dateStr}-${randomStr}`;\r\n}\r\nexports.default
+    = genUniqueId;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVW5pcXVlSURHZW5lcmF0b3IuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJVbmlxdWVJREdlbmVyYXRvci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLFNBQVMsV0FBVztJQUNoQixNQUFNLE9BQU8sR0FBRyxJQUFJO1NBQ2YsR0FBRyxFQUFFO1NBQ0wsUUFBUSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUMsdUNBQXVDO0lBRTFELE1BQU0sU0FBUyxHQUFHLElBQUk7U0FDakIsTUFBTSxFQUFFO1NBQ1IsUUFBUSxDQUFDLEVBQUUsQ0FBQztTQUNaLFNBQVMsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUMsQ0FBQyx5Q0FBeUM7SUFFL0QsT0FBTyxHQUFHLE9BQU8sSUFBSSxTQUFTLEVBQUUsQ0FBQztBQUNyQyxDQUFDO0FBRUQsa0JBQWUsV0FBVyxDQUFDIn0=","assetPath":"Assets/Scripts/UniqueIDGenerator.ts","manifest":{"properties":[],"name":"UniqueIDGenerator","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 37e951cd9ade8de0d48ef2d8a8120d7a
+  onlyWriteTrigger: 0
