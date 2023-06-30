@@ -97,6 +97,7 @@ export default class BuildingManager extends ZepetoScriptBehaviour {
             console.error("Not Enough Funds!");
             GameObject.Destroy(this.currentPreview.gameObject);
             UIManager.GetInstance().ShowPreview(false);
+            this.currentPreview = undefined;
             return; 
         }
         
